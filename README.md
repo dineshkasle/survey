@@ -27,4 +27,6 @@ Also, be sure to have `git` available in your PATH, `npm` might need it (You can
 ## Running the project
 
     $ node server.js
+    
+    Please visit http://localhost:8000/ to view the project
 

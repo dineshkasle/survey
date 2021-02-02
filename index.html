@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey</title>
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+    <!--  Bootstrap and font awesome style-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="js/app.js"></script>
+    <link rel="shortcut icon"
+          href=data:image/png;base64,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
+          type="image/x-icon">
+</head>
+<body>
+<!--Survey Heading Start-->
+<div class="jumbotron text-center box-ss">
+    <h4> Lorem Ipsum Survey.</h4>
+</div>
+<!--Survey Heading End-->
+<div class="container c-wd">
+    <div class="panel">
+        <div class="panel-body">
+            <div class="box">
+                <!--Survey Data Start-->
+                <div class="formDetails" id="surveyForm"></div>
+                <!--Survey Data End-->
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

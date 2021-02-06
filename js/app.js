@@ -9,7 +9,7 @@ function createForm() {
     form.setAttribute("method", "post");
     form.setAttribute("name", "userSurveyForm");
     form.setAttribute("id", "userSurveyFormId");
-    form.setAttribute("onsubmit", "foo(this)");
+    form.setAttribute("onsubmit", "formSubmit(this)");
 
     // Get Question data and convert to json
     fetch('http://localhost:8000/questions').then(res => {
@@ -18,7 +18,7 @@ function createForm() {
         data.map(val => {
             // get input type from response and create element accordingly
             var inputType;
-            if (val.type === 'text' || val.type === 'email' || val.type === 'number' || val.type === 'rating') {
+            if (val.type === 'text' || val.type === 'email' || val.type === 'number') {
                 inputType = 'input'
             } else if (val.type === 'textarea') {
                 inputType = 'textarea'
@@ -80,16 +80,18 @@ function createForm() {
 
             form.insertBefore(itemLabel, FN);
             if (val.type === 'rating') {
-                //               var node = document.createElement("div");                 // Create a <li> node
-                //               var textnode = document.createTextNode(`<div class="rating">
-                //   <span><i class="fa fa-star"></i></span><span><i class="fa fa-star"></i>
-                // </span><span><i class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span><span><i class="fa fa-star"></i></span>
-                // </div>`);
-                //               var d1 = document.get('checkbox');
-                //               console.log(d1);
-                //  d1.insertAdjacentHTML('beforeend', '<div id="two">two</div>');
-                // form.appendChild(node);
-                //  document.getElementById("4").appendChild(node);
+                let ratings = document.createElement('div');
+                ratings.innerHTML = `
+               <div class="rating text-center">
+                  <span class="ml"><i class="fa fa-star fa-2x"></i></span>
+                  <span class="ml"><i class="fa fa-star fa-2x"></i></span>
+                  <span class="ml"><i class="fa fa-star fa-2x"></i></span>
+                  <span class="ml"><i class="fa fa-star fa-2x"></i></span>
+                  <span class="ml"><i class="fa fa-star fa-2x"></i></span>
+                </div>
+                `;
+                form.appendChild(ratings);
+                console.log(val.type);
             }
 
             form.appendChild(br.cloneNode());
@@ -134,7 +136,8 @@ window.addEventListener("load", function () {
     createForm();
 });
 
-function foo(form) {
+function formSubmit(form) {
+    document.getElementById('mainContainer').hidden = true;
     alert("Successfully Submitted.");
     return true;
 }
